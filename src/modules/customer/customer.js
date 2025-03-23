@@ -35,4 +35,4 @@ const Customer = sequelize.define(
     paranoid: true, // Enables soft deletes
     }
     );
-    module.exports = User;
+    module.exports = Customer;
