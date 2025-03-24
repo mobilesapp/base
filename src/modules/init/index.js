@@ -4,9 +4,9 @@ const router = express.Router();
 
 /**
  * @swagger
- * /heartbeat:
+ * /api/heartbeat:
  *   get:
- *     summary: Returns a sample message
+ *     summary: Returns health message
  *     responses:
  *       200:
  *         description: A successful response
