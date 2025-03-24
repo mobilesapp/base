@@ -46,4 +46,4 @@ const Customer = sequelize.define(
     tableName: 'customer'
     }
     );
-    module.exports = User;
+    module.exports = Customer;
