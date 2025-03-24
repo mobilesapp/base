@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const dbConfig = require("../configs/db.js"); 
 
+process.env.NODE_ENV = 'development';
 const sequelize = new Sequelize(dbConfig[process.env.NODE_ENV]);
 sequelize
 .sync()

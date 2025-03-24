@@ -1,9 +1,9 @@
 const custService = require("./cust_service");
 
-exports.creatUser = async (req, res, next) => {
+exports.creatCustomer = async (req, res, next) => {
     try {
-    const userData = req.body;
-    const newUser = await custService.createUser(userData);
+    const custData = req.body;
+    const newUser = await custService.createUser(custData);
     res.status(200).json({
     status: "success",
     message: "User created successfully.",
@@ -13,6 +13,6 @@ exports.creatUser = async (req, res, next) => {
     });
     } catch (err) {
     console.error(err);
-    res.status(500).json({ status: "error", message: "Error creating user." });
+    res.status(500).json({ status: "error", message: err.message});
     }
     };
