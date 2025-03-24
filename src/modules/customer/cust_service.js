@@ -1,3 +1,4 @@
-exports.createUser = (userData) => {
-    return User.create(userData);
+const Customer = require("./customer");
+exports.createUser = (custData) => {
+    return Customer.create(custData);
 };
