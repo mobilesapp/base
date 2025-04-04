@@ -9,15 +9,13 @@ const router = express.Router();
 *     Customer:
 *       type: object
 *       properties:
-*         phoneNo:
-*           type: integer
+*         customerId:
+*           type: string
 *         firstName:
 *           type: string
 *         lastName:
 *           type: string
 *         email:
-*           type: string
-*         customerId:
 *           type: string
 *         createdAt:
 *           type: string
@@ -25,6 +23,24 @@ const router = express.Router();
 *         updatedAt:
 *           type: string
 *           format: date-time
+*         customerAddress:
+*           type: array
+*           items:
+*              $ref: '#/components/schemas/CustomerAddress'
+*
+*     CustomerAddress:
+*           type: object
+*           properties:
+*             houseNo:
+*               type: string
+*             street:
+*               type: string
+*             city:
+*               type: string
+*             province:
+*               type: string
+*             postalCode:
+*               type: string      
 */
 
 /**
