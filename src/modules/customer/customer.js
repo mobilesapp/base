@@ -1,12 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../../utils/db_util"); 
+const CustomerAddress = require("./customer_address"); 
 
 const Customer = sequelize.define(
     "customer",
     {
-    phoneNo: {
-    type: DataTypes.INTEGER,
-    field: 'phone_no',
+    customerId: {
+    type: DataTypes.STRING(100),
+    field: 'customer_id',
     primaryKey: true,
     allowNull: false,
     autoIncrement: false,
@@ -25,11 +26,6 @@ const Customer = sequelize.define(
     type: DataTypes.STRING(45),
     allowNull: true,
     },
-    customerId: {
-    type: DataTypes.STRING(45),
-    field: 'customer_id',
-    allowNull: true,
-    },
     createdAt: {
     type: DataTypes.DATE,
     field: 'created_at',
@@ -46,4 +42,9 @@ const Customer = sequelize.define(
     tableName: 'customer'
     }
     );
+
+    Customer.hasMany(CustomerAddress, { foreignKey: "customerId", onDelete: "CASCADE" });
+    CustomerAddress.belongsTo(Customer, { foreignKey: "customerId" });
+
+
     module.exports = Customer;
