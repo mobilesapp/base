@@ -11,7 +11,7 @@ const options = {
       description: 'Swagger documentation of MSAPP',
     },
   },
-  apis: [ 'src/modules/init/*.js','src/modules/customer/*.js' ],
+  apis: [ 'src/modules/init/*.js','src/modules/customer/*.js' ,'src/modules/login/*.js' ], // Path to the API docs
 };
 
 const specs = swaggerJsdoc(options);
