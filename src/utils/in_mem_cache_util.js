@@ -12,3 +12,9 @@ function getCache(key) {
 function delCache(key) {
   return cache.del(key);
 }
+
+module.exports = {
+  setCache,
+  getCache,
+  delCache
+};

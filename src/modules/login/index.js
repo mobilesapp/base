@@ -9,10 +9,12 @@ const router = express.Router();
 *     summary: Check Valid Customer
 *     parameters:
 *       - in: query
-*       - customer: customer
-*     schema:
-*       type: string
-*     requered: true
+*         name: customer
+*         schema:
+*           type: string
+*         required: false
+*         description: Customer Id (e.g., CUST-[DATE]-[RANDOM])
+*
 *     description: Check if the customer is valid
 *     responses:
 *       200:
