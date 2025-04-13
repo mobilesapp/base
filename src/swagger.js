@@ -10,6 +10,11 @@ const options = {
       version: '1.0.0',
       description: 'Swagger documentation of MSAPP',
     },
+    tags: [
+      { name: 'Heatbeat', description: 'Testing endpoints' },
+      { name: 'Auth', description: 'Authentication endpoints' },
+      { name: 'Customer', description: 'Customer management' },
+    ],
   },
   apis: [ 'src/modules/init/*.js','src/modules/customer/*.js' ,'src/modules/login/*.js' ], // Path to the API docs
 };
