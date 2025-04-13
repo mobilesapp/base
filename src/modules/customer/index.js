@@ -27,6 +27,10 @@ const router = express.Router();
 *           type: array
 *           items:
 *              $ref: '#/components/schemas/CustomerAddress'
+*         customerContact:
+*           type: array
+*           items:
+*              $ref: '#/components/schemas/customerContact'
 *
 *     CustomerAddress:
 *           type: object
@@ -40,7 +44,14 @@ const router = express.Router();
 *             province:
 *               type: string
 *             postalCode:
-*               type: string      
+*               type: string     
+*     customerContact:
+*           type: object
+*           properties:
+*             phoneNo:
+*               type: string
+*             default:
+*               type: boolean   
 */
 
 /**
@@ -48,6 +59,7 @@ const router = express.Router();
 * /api/customer/create-customer:
 *   post:
 *     summary: Create new customer
+*     tags: [Customer]
 *     requestBody:
 *       required: true
 *       content:

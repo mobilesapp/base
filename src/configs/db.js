@@ -8,8 +8,8 @@ const config = {
         port: 24066,
         dialect: "mysql",
         logging: false,
-        },
-        production: {
+    },
+    production: {
         username: process.env.USERNAME,
         password: process.env.PASSWORD,
         database: process.env.DATABASE,
@@ -18,14 +18,14 @@ const config = {
         dialect: "mysql",
         logging: false,
         dialectOptions: {
-        ssl: {
-        require: true,
-        rejectUnauthorized: false,
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
+            connectionTimeoutMillis: 5000,
+            idleTimeoutMillis: 30000,
+            requestTimeoutMillis: 15000,
         },
-        connectionTimeoutMillis: 5000,
-        idleTimeoutMillis: 30000,
-        requestTimeoutMillis: 15000,
-        },
-        },
-     };
-        module.exports = config;
+    },
+};
+module.exports = config;

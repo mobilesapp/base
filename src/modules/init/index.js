@@ -7,6 +7,7 @@ const router = express.Router();
  * /api/heartbeat:
  *   get:
  *     summary: Returns health message
+ *     tags: [Heatbeat]
  *     responses:
  *       200:
  *         description: A successful response
