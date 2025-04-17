@@ -37,6 +37,7 @@ jobs:
         USER: ${{ secrets.EC2_USER }}
       run: |
         ssh -T -o StrictHostKeyChecking=no -i key.pem $USER@$HOST << 'EOF'
+          git config --global --add safe.directory /opt/base/base
           cd /opt/base/base   # Change this to your actual app directory
           git pull origin main
           npm install
