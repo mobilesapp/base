@@ -7,6 +7,7 @@ const initRoutes = require("./modules/init");
 const customerRoutes = require("./modules/customer");
 const loginRoutes = require("./modules/login");
 const errorHandler = require("./handlers/error_handler");
+const requestRoutes = require("./modules/request");
 
 app.use(express.json());         
 app.use(express.urlencoded({ extended: false }));
@@ -17,4 +18,5 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use("/api", initRoutes);
 app.use("/api/customer", customerRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/request", requestRoutes);
 module.exports = app;

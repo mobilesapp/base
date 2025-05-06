@@ -1,0 +1,47 @@
+name: Deploy to Amazon ECS
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+  
+env:
+  AWS_REGION: eu-north-1                   # set this to your preferred AWS region, e.g. us-west-1
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Reconstruct and convert PPK to PEM
+      run: |
+        # write your PPK from the secret
+        echo "${{ secrets.EC2_PPK }}" > mykey.ppk
+
+        # install PuTTYgen on Ubuntu
+        sudo apt-get update
+        sudo apt-get install -y putty-tools
+
+        # convert to OpenSSH PEM
+        puttygen mykey.ppk -O private-openssh -o key.pem
+
+        # lock it down
+        chmod 600 key.pem
+        
+    - name: Deploy to EC2
+      env:
+        HOST: ${{ secrets.EC2_HOST }}
+        USER: ${{ secrets.EC2_USER }}
+      run: |
+        ssh -T -o StrictHostKeyChecking=no -i key.pem $USER@$HOST << 'EOF'
+          sudo chown -R ec2-user:ec2-user /opt/base/base
+          git config --global --add safe.directory /opt/base/base
+          cd /opt/base/base   # Change this to your actual app directory
+          git pull origin main
+          npm install
+          pkill -f "npm"
+          npm start
+        EOF
