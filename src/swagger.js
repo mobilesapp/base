@@ -14,9 +14,10 @@ const options = {
       { name: 'Heatbeat', description: 'Testing endpoints' },
       { name: 'Auth', description: 'Authentication endpoints' },
       { name: 'Customer', description: 'Customer management' },
+      { name: 'Request', description: 'Request management' },
     ],
   },
-  apis: [ 'src/modules/init/*.js','src/modules/customer/*.js' ,'src/modules/login/*.js' ], // Path to the API docs
+  apis: [ 'src/modules/init/*.js','src/modules/customer/*.js' ,'src/modules/login/*.js', 'src/modules/request/*.js'], // Path to the API docs
 };
 
 const specs = swaggerJsdoc(options);
